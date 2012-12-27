@@ -12,14 +12,6 @@ public class Main {
 
 	public static void main(String... args) throws IOException {
         String port = System.getenv("PORT");
-        if (port == null) {
-        	System.out.println("Environment variable not set, reading java property...");
-        	port = System.getProperty("PORT");
-        }
-        if (port == null) {
-        	System.out.println("Java property not set... error...");
-        	throw new IOException("Port not defined for the server");
-        }
 		HttpServer server = HttpServer.create(new InetSocketAddress(Integer.parseInt(port)), 0);
         server.createContext("/", new HttpHandler() {
         	public void handle(HttpExchange t) throws IOException {
